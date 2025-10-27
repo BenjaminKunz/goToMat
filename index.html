@@ -1,0 +1,17 @@
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+
+  fetch('links.json')
+    .then(response => response.json())
+    .then(data => {
+      const target = data[code];
+      if (target) {
+        window.location.href = target;
+      } else {
+        document.body.innerText = "Link nicht gefunden.";
+      }
+    });
+</script>
+``
